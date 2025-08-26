@@ -209,11 +209,14 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card 
                 key={project.id} 
-                className={`overflow-hidden hover:shadow-xl transition-all duration-700 hover:scale-105 group ${
-                  projectsVisible 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                }`}
+                className={`overflow-hidden hover:shadow-xl transition-all duration-700 hover:scale-105 group
+                  ${
+                    projectsVisible
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-8'
+                  }
+                  sm:opacity-100 sm:translate-y-0`
+                }
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="relative overflow-hidden">
