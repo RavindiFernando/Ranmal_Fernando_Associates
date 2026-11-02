@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,10 +12,8 @@ import emailjs from '@emailjs/browser';
 import { toast as sonnerToast } from "@/components/ui/sonner";
 
 const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [contactInfoVisible, setContactInfoVisible] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
-  const heroRef = useRef(null);
   const contactInfoRef = useRef(null);
   const formRef = useRef(null);
 
@@ -36,9 +35,7 @@ const Contact = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === heroRef.current) {
-              setIsVisible(true);
-            } else if (entry.target === contactInfoRef.current) {
+            if (entry.target === contactInfoRef.current) {
               setContactInfoVisible(true);
             } else if (entry.target === formRef.current) {
               setFormVisible(true);
@@ -49,7 +46,6 @@ const Contact = () => {
       observerOptions
     );
 
-    if (heroRef.current) observer.observe(heroRef.current);
     if (contactInfoRef.current) observer.observe(contactInfoRef.current);
     if (formRef.current) observer.observe(formRef.current);
 
@@ -136,32 +132,12 @@ const Contact = () => {
     <div className="min-h-screen">
       <Navigation />
       
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative py-32 bg-gradient-to-br from-primary/10 to-accent/5"
-        style={{
-          backgroundImage: "url('/images/contact-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center space-y-6 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-        <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-          Get In Touch
-        </span>
-        <h1 className="text-5xl font-bold text-white animate-fade-in-up">Contact Us</h1>
-        <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-          Ready to discuss your engineering project? Our team of experts is here to
-          provide consultation and turn your vision into reality.
-        </p>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
-      </section>
+      <PageHero
+        eyebrow="Get In Touch"
+        title="Contact Us"
+        description="Ready to discuss your engineering project? Our team of experts is here to provide consultation and turn your vision into reality."
+        image="/images/contact-bg.jpg"
+      />
 
       {/* Contact Form & Info */}
       <section className="py-20">
@@ -259,7 +235,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div
               ref={contactInfoRef}
-              className="rounded-2xl bg-primary2/30 border border-primary2 p-6 md:p-8"
+              className="self-start lg:sticky lg:top-28 rounded-2xl bg-primary2/30 border border-primary2 p-6 md:p-8"
             >
               {contactInfo.map((info, index) => (
                 <div

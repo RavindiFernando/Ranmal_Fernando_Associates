@@ -2,45 +2,27 @@
 /* Responsive and accessible Swiper navigation arrows */
 .hero-swiper .swiper-button-next,
 .hero-swiper .swiper-button-prev {
-  top: 50%;
-  width: 36px;
-  height: 36px;
-  margin-top: -18px;
-  background: rgba(30, 41, 59, 0.55); /* slate-800/55 */
+  top: auto;
+  bottom: 28px;
+  margin-top: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(34, 24, 27, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   transition: background 0.2s, transform 0.2s;
   z-index: 50;
   pointer-events: auto;
 }
 
-/* Make sure arrows are always clickable above overlays */
-.hero-swiper .swiper-button-next,
 .hero-swiper .swiper-button-prev {
-  pointer-events: auto;
+  left: auto;
+  right: 76px;
 }
 
-/* Responsive: move arrows lower and outward on small screens to avoid text overlap */
-@media (max-width: 1024px) {
-  .hero-swiper .swiper-button-next,
-  .hero-swiper .swiper-button-prev {
-    top: auto;
-    bottom: 24px;
-    margin-top: 0;
-    transform: translateY(0);
-    width: 32px;
-    height: 32px;
-    background: rgba(30, 41, 59, 0.7);
-  }
-  .hero-swiper .swiper-button-next {
-    right: 16px;
-    left: auto;
-  }
-  .hero-swiper .swiper-button-prev {
-    left: 16px;
-    right: auto;
-  }
+.hero-swiper .swiper-button-next {
+  right: 28px;
 }
 
 
@@ -54,28 +36,29 @@
 }
 .hero-swiper .swiper-button-next:hover,
 .hero-swiper .swiper-button-prev:hover {
-  background: rgba(255,255,255,0.85);
-  color: #1e293b;
+  background: hsl(var(--primary2));
+  color: hsl(var(--primary));
   transform: scale(1.08);
 }
 .hero-swiper .swiper-button-next:after,
 .hero-swiper .swiper-button-prev:after {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 .hero-swiper .swiper-pagination-bullets {
-  bottom: 32px !important;
+  bottom: 40px !important;
 }
 .hero-swiper .swiper-pagination-bullet {
   background: #fff;
-  opacity: 0.6;
-  width: 12px;
-  height: 12px;
-  margin: 0 6px !important;
-  transition: background 0.2s, transform 0.2s;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  margin: 0 5px !important;
+  transition: all 0.3s;
 }
 .hero-swiper .swiper-pagination-bullet-active {
-  background: #2563eb;
+  background: hsl(var(--primary2));
   opacity: 1;
-  transform: scale(1.2);
+  width: 24px;
+  border-radius: 9999px;
 }

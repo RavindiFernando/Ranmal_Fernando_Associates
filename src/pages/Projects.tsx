@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { MapPin, Eye } from "lucide-react";
@@ -15,14 +16,10 @@ import project8 from "@/assets/project8.jpg";
 import project9 from "@/assets/project9.png";
 
 const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [projectsVisible, setProjectsVisible] = useState(false);
-  const [ctaVisible, setCtaVisible] = useState(false);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [spotlightIndex, setSpotlightIndex] = useState(0);
-  const heroRef = useRef(null);
   const projectsRef = useRef(null);
-  const ctaRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,12 +42,8 @@ const Projects = () => {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              if (entry.target === heroRef.current) {
-                setIsVisible(true);
-              } else if (entry.target === projectsRef.current) {
+              if (entry.target === projectsRef.current) {
                 setProjectsVisible(true);
-              } else if (entry.target === ctaRef.current) {
-                setCtaVisible(true);
               }
             }
           });
@@ -58,9 +51,7 @@ const Projects = () => {
         observerOptions
       );
 
-      if (heroRef.current) observer.observe(heroRef.current);
       if (projectsRef.current) observer.observe(projectsRef.current);
-      if (ctaRef.current) observer.observe(ctaRef.current);
     }, 100);
 
     return () => {
@@ -156,32 +147,12 @@ const Projects = () => {
     <div className="min-h-screen">
       <Navigation />
       
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative py-32 bg-gradient-to-br from-primary/10 to-accent/5"
-        style={{
-          backgroundImage: "url('/images/projects-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center space-y-6 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-              Our Portfolio
-            </span>
-            <h1 className="text-5xl font-bold text-white animate-fade-in-up">Our Projects</h1>
-            <p className="text-xl text-neutral-50 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-              Explore our portfolio of successful engineering projects that demonstrate our
-              commitment to innovation, quality, and sustainable development.
-            </p>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
-      </section>
+      <PageHero
+        eyebrow="Our Portfolio"
+        title="Our Projects"
+        description="Explore our portfolio of successful engineering projects that demonstrate our commitment to innovation, quality, and sustainable development."
+        image="/images/projects-bg.jpg"
+      />
 
       {/* 
       <section className="py-16 bg-card">
@@ -295,22 +266,6 @@ const Projects = () => {
           )}
         </DialogContent>
       </Dialog>
-
-      
-      {/* CTA Section */}
-          <section ref={ctaRef} className="py-20 bg-gradient-to-br from-primary2/50 to-background">
-            <div className={`container mx-auto px-4 text-center transition-all duration-1000 ${
-              ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <h2 className="text-4xl font-bold text-primary mb-6 animate-fade-in-up">Ready to Start Your Project?</h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
-                Let's discuss how our engineering expertise can bring your vision to life.
-              </p>
-              <Button size="lg" className="text-lg font-semibold hover:scale-105 transition-transform duration-300 animate-fade-in-up animation-delay-500" asChild>
-                <a href="/contact" >Get In Touch</a>
-              </Button>
-            </div>
-          </section>
 
       <Footer />
     </div>

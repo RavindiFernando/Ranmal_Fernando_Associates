@@ -51,14 +51,15 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-28 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-28 bg-background bg-blueprint relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div
           className={`max-w-2xl mb-14 md:mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary2 px-3 py-1 rounded-full">
+          <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60">
+            <span className="h-px w-8 bg-primary/40" />
             What We Do
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mt-4">

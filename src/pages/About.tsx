@@ -1,16 +1,15 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { Shield, Award, Star, Lightbulb, UserCheck, Calendar, Building2  } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 const founderImage = "/images/founder.jpg"; // public/images/founder.jpg
 
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [storyVisible, setStoryVisible] = useState(false);
   const [valuesVisible, setValuesVisible] = useState(false);
   const [projectCount, setProjectCount] = useState(0);
-  const heroRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
 
@@ -39,9 +38,7 @@ const About = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === heroRef.current) {
-              setIsVisible(true);
-            } else if (entry.target === storyRef.current) {
+            if (entry.target === storyRef.current) {
               setStoryVisible(true);
             } else if (entry.target === valuesRef.current) {
               setValuesVisible(true);
@@ -52,7 +49,6 @@ const About = () => {
       observerOptions
     );
 
-    if (heroRef.current) observer.observe(heroRef.current);
     if (storyRef.current) observer.observe(storyRef.current);
     if (valuesRef.current) observer.observe(valuesRef.current);
 
@@ -99,31 +95,12 @@ const About = () => {
     <div className="min-h-screen">
       <Navigation />
       
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative py-32 bg-gradient-to-br from-primary/10 to-accent/5"
-        style={{
-          backgroundImage: "url('/images/about-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center space-y-6 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-              Since 2007
-            </span>
-            <h1 className="text-5xl font-bold text-white animate-fade-in-up">About Us</h1>
-            <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-                  At Ranmal Fernando Associates, we provide reliable and innovative structural engineering solutions, guiding projects from concept to completion with safety, efficiency, and durability at the core.
-            </p>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
-      </section>
+      <PageHero
+        eyebrow="Since 2007"
+        title="About Us"
+        description="At Ranmal Fernando Associates, we provide reliable and innovative structural engineering solutions, guiding projects from concept to completion with safety, efficiency, and durability at the core."
+        image="/images/about-bg.jpg"
+      />
 
       {/* Story Section */}
       <section ref={storyRef} className="py-20">

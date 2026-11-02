@@ -69,19 +69,22 @@ const StatsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-primary2 relative py-20 overflow-hidden">
-      
-
+    <section ref={sectionRef} className="bg-background relative py-20 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
+          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60 mb-4">
+            <span className="h-px w-8 bg-primary/40" />
+            01 / Track Record
+            <span className="h-px w-8 bg-primary/40" />
+          </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6">
             Proven Track Record of Excellence
           </h2>
           <p className="text-lg md:text-xl text-primary max-w-3xl mx-auto leading-relaxed px-4">
-            Our achievements speak for themselves. With decades of experience and hundreds of successful projects, 
+            Our achievements speak for themselves. With nearly two decades of experience and thousands of successful projects,
             we continue to set the standard in engineering excellence.
           </p>
         </div>
@@ -105,7 +108,7 @@ const StatsSection = () => {
             {stats.map((stat, index) => (
               <div 
                 key={index} 
-                className={`flex items-center space-x-4 md:space-x-6 p-4 rounded-xl bg-white/80 hover:shadow-lg transition-all duration-700 hover:bg-white/50 hover:shadow-lg group ${
+                className={`flex items-center space-x-4 md:space-x-6 p-4 rounded-xl bg-primary2/50 transition-all duration-700 hover:bg-primary2 hover:shadow-lg group ${
                   isVisible 
                     ? 'transform translate-x-0 opacity-100' 
                     : 'transform translate-x-8 opacity-0'

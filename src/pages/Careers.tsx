@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import {
   TrendingUp,
@@ -62,11 +63,9 @@ const roles = [
 ];
 
 const Careers = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [copied, setCopied] = useState(false);
   const [perksVisible, setPerksVisible] = useState(false);
   const [applyVisible, setApplyVisible] = useState(false);
-  const heroRef = useRef(null);
   const perksRef = useRef(null);
   const applyRef = useRef(null);
 
@@ -75,8 +74,7 @@ const Careers = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === heroRef.current) setIsVisible(true);
-            else if (entry.target === perksRef.current) setPerksVisible(true);
+            if (entry.target === perksRef.current) setPerksVisible(true);
             else if (entry.target === applyRef.current) setApplyVisible(true);
           }
         });
@@ -84,7 +82,6 @@ const Careers = () => {
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
-    if (heroRef.current) observer.observe(heroRef.current);
     if (perksRef.current) observer.observe(perksRef.current);
     if (applyRef.current) observer.observe(applyRef.current);
 
@@ -101,34 +98,12 @@ const Careers = () => {
     <div className="min-h-screen">
       <Navigation />
 
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative py-32 bg-gradient-to-br from-primary/10 to-accent/5"
-        style={{
-          backgroundImage: "url('/images/services-bg.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <div
-            className={`text-center space-y-6 transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide">
-              Join Our Team
-            </span>
-            <h1 className="text-5xl font-bold text-white animate-fade-in-up">Careers at RFA</h1>
-            <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-              Build your career alongside engineers who care about the craft. We're always
-              looking for talented engineers and draftsmen ready to grow with us.
-            </p>
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
-      </section>
+      <PageHero
+        eyebrow="Join Our Team"
+        title="Careers at RFA"
+        description="Build your career alongside engineers who care about the craft. We're always looking for talented engineers and draftsmen ready to grow with us."
+        image="/images/services-bg.webp"
+      />
 
       {/* Why Work With Us */}
       <section ref={perksRef} className="py-20">

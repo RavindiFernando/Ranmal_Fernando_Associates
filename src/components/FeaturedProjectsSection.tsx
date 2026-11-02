@@ -61,8 +61,9 @@ const FeaturedProjectsSection = () => {
           }`}
         >
           <div className="space-y-3">
-            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary2 px-3 py-1 rounded-full">
-              Our Work
+            <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60">
+              <span className="h-px w-8 bg-primary/40" />
+              02 / Our Work
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
               Featured Projects

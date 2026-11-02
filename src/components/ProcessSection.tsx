@@ -55,17 +55,19 @@ const ProcessSection = () => {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-primary2">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-primary2 bg-blueprint">
       <div className="container mx-auto px-4">
         <div
           className={`text-center max-w-2xl mx-auto mb-14 md:mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-white px-3 py-1 rounded-full">
-            How We Work
+          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60">
+            <span className="h-px w-8 bg-primary/40" />
+            03 / How We Work
+            <span className="h-px w-8 bg-primary/40" />
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mt-4">
             Our Process
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mt-4">

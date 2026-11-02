@@ -1,105 +1,101 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+
+const links = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Projects", path: "/projects" },
+  { name: "Careers", path: "/careers" },
+  { name: "Contact", path: "/contact" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/images/logo.png" 
-                alt="RFA Logo" 
-                className="h-8 w-auto brightness-0 invert"
-              />
-              <span className="text-lg font-bold text-primary2">Ranmal Fernando Associates</span>
-            </div>
-            <p className="text-sm text-primary-foreground/80">
-              Leading structural engineering consultancy delivering safe and reliable solutions for commercial, residential,  and industrial projects.
+    <footer className="relative bg-surface-dark bg-blueprint-dark text-white overflow-hidden">
+      <div className="container mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10">
+          <div className="lg:col-span-7">
+            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary2/60">
+              <span className="h-px w-8 bg-primary2/40" />
+              Start a project
             </p>
+            <h2 className="mt-6 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-[0.95] tracking-tight">
+              Let's build
+              <span className="block italic text-primary2">something lasting.</span>
+            </h2>
+            <a
+              href="mailto:ranmalfrnnd@yahoo.com"
+              className="group mt-10 inline-flex items-center gap-3 text-lg sm:text-2xl border-b border-white/20 pb-2 hover:border-primary2 hover:text-primary2 transition-colors duration-300"
+            >
+              ranmalfrnnd@yahoo.com
+              <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary2">Quick Links</h3>
-            <div className="flex flex-col space-y-2">
-              <Link to="/" className="text-sm hover:text-primary2 transition-colors">
-                Home
-              </Link>
-              <Link to="/about" className="text-sm hover:text-primary2 transition-colors">
-                About Us
-              </Link>
-              <Link to="/services" className="text-sm hover:text-primary2 transition-colors">
-                Services
-              </Link>
-              <Link to="/projects" className="text-sm hover:text-primary2 transition-colors">
-                Projects
-              </Link>
-              <Link to="/careers" className="text-sm hover:text-primary2 transition-colors">
-                Careers
-              </Link>
-              <Link to="/contact" className="text-sm hover:text-primary2 transition-colors">
-                Contact
-              </Link>
+          <div className="lg:col-span-5 grid grid-cols-2 gap-8 lg:pt-16">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary2/60 mb-5">
+                Navigate
+              </p>
+              <ul className="space-y-2.5">
+                {links.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="text-white/70 hover:text-primary2 transition-colors duration-300"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary2">Services</h3>
-            <div className="flex flex-col space-y-2 text-sm text-primary-foreground/80">
-              <span>Structural Engineering</span>
-              <span>Foundation & Sub-Structure Engineering</span>
-              <span>Structural Assessments & Strengthening</span>
-              <span>Construction Supervision & Quality Control</span>
-              <span>Consultancy & Advisory</span>
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-primary2">Contact Info</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-sm">
-                <MapPin className="h-4 w-4" />
-                <span>35 1/1, Sunethradevi Rd, Nugegoda, Sri Lanka</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <Phone className="h-4 w-4" />
-                <span>+94 11 282 7244</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <Phone className="h-4 w-4" />
-                <span>+94 77 767 2713</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm">
-                <Mail className="h-4 w-4" />
-                <span>ranmalfrnnd@yahoo.com</span>
-              </div>
-              
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary2/60 mb-5">
+                Visit
+              </p>
+              <address className="not-italic space-y-4 text-white/70 leading-relaxed">
+                <p>
+                  35 1/1, Sunethradevi Rd,
+                  <br />
+                  Nugegoda, Sri Lanka
+                </p>
+                <p>
+                  <a href="tel:+94112827244" className="hover:text-primary2 transition-colors">
+                    +94 11 282 7244
+                  </a>
+                  <br />
+                  <a href="tel:+94777672713" className="hover:text-primary2 transition-colors">
+                    +94 77 767 2713
+                  </a>
+                </p>
+              </address>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-sm text-primary-foreground/60">
-            © 2024 Ranmal Fernando Associates. All rights reserved.
-          </p>
-            <p className="text-sm text-primary-foreground/60">
+        <div className="mt-14 md:mt-24 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-sm text-white/40">
+          <p>© {new Date().getFullYear()} Ranmal Fernando Associates. All rights reserved.</p>
+          <p>
             Designed & Developed by{" "}
             <a
               href="https://www.linkedin.com/in/ravindifernando/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-primary-foreground/80 transition-colors"
+              className="underline underline-offset-4 hover:text-primary2 transition-colors"
             >
               Ravindi Fernando
             </a>
-            </p>
-          
+          </p>
         </div>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 z-0 translate-y-[22%] pointer-events-none select-none font-display font-black text-outline leading-none text-[30vw] text-center"
+      >
+        RFA
       </div>
     </footer>
   );
