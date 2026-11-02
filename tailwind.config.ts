@@ -35,7 +35,11 @@ export default {
 				},
 				primary2: {
 					DEFAULT: 'hsl(var(--primary2))',
-					foreground: 'hsl(var(--primary2-foreground))'
+					foreground: 'hsl(var(--primary2-foreground))',
+					glow: 'hsl(var(--primary2-glow))'
+				},
+				surface: {
+					dark: 'hsl(var(--surface-dark))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

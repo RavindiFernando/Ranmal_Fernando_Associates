@@ -1,8 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Shield, Award, Star, Lightbulb, UserCheck  } from "lucide-react";
+import { Shield, Award, Star, Lightbulb, UserCheck, Calendar, Building2  } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 const founderImage = "/images/founder.jpg"; // public/images/founder.jpg
 
@@ -11,9 +9,25 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [storyVisible, setStoryVisible] = useState(false);
   const [valuesVisible, setValuesVisible] = useState(false);
+  const [projectCount, setProjectCount] = useState(0);
   const heroRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
+
+  useEffect(() => {
+    if (!storyVisible) return;
+    let current = 0;
+    const target = 3000;
+    const timer = setInterval(() => {
+      current += target / 40;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      setProjectCount(Math.floor(current));
+    }, 30);
+    return () => clearInterval(timer);
+  }, [storyVisible]);
 
   useEffect(() => {
     const observerOptions = {
@@ -99,51 +113,82 @@ const About = () => {
           <div className={`text-center space-y-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
+            <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Since 2007
+            </span>
             <h1 className="text-5xl font-bold text-white animate-fade-in-up">About Us</h1>
             <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
                   At Ranmal Fernando Associates, we provide reliable and innovative structural engineering solutions, guiding projects from concept to completion with safety, efficiency, and durability at the core.
             </p>
           </div>
         </div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
       </section>
 
       {/* Story Section */}
       <section ref={storyRef} className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 md:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
         <div className={`lg:col-span-2 space-y-6 transition-all duration-1000 ${
           storyVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
         }`}>
-          <h2 className="text-4xl font-bold text-primary">Our Story</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            Ranmal Fernando Associates (RFA) was founded in February 2007 by Eng.Ranmal Fernando, following a distinguished 17-year career as a site engineer, project engineer at State Engineering Corporation, and Chief Engineer at Kelsey Developments Pvt Ltd. RFA stands as a premier structural and civil engineering firm specializing in structural designs, project management, retrofitting works for existing buildings, and value engineering
-            </p>
-          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            Over the years, RFA has grown significantly, undertaking numerous high-profile projects and expanding its team of experts. We collaborate closely with clients, architects, MEP engineers, and quantity surveyors to achieve comprehensive project outcomes. Our extensive portfolio includes diverse sectors such as commercial buildings, mixed developments, housing schemes, apartments, hospitals, academic buildings, and large-scale factories.
+          <div className="flex items-center gap-4">
+            <span className="h-10 w-1.5 rounded-full bg-primary" />
+            <h2 className="text-4xl font-bold text-primary">Our Story</h2>
+          </div>
+          <p className="text-xl text-primary font-medium leading-relaxed">
+            Founded in February 2007 by Eng. Ranmal Fernando, RFA has grown into a premier
+            structural and civil engineering firm built on a distinguished 17-year engineering career.
           </p>
-          <div className="grid grid-cols-2 gap-0 mt-8">
-            <div className="text-center">
-          <h3 className="text-3xl font-bold text-primary animate-fade-in-up animation-delay-500">2007</h3>
-          <p className="text-muted-foreground animate-fade-in-up animation-delay-700">Founded</p>
+          <p className="text-base text-muted-foreground leading-relaxed">
+            Following roles as a site engineer and project engineer at the State Engineering
+            Corporation, and later as Chief Engineer at Kelsey Developments Pvt Ltd, Eng. Fernando
+            built RFA around structural design, project management, retrofitting of existing
+            buildings, and value engineering.
+          </p>
+          <p className="text-base text-muted-foreground leading-relaxed">
+            Over the years, RFA has grown significantly, undertaking numerous high-profile projects
+            and expanding its team of experts. We collaborate closely with clients, architects, MEP
+            engineers, and quantity surveyors to achieve comprehensive project outcomes across
+            commercial buildings, mixed developments, housing schemes, apartments, hospitals,
+            academic buildings, and large-scale factories.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-8 mt-8">
+            <div className={`flex items-center gap-3 transition-all duration-700 ${storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '500ms' }}>
+              <Calendar className="h-6 w-6 text-primary" strokeWidth={1.75} />
+              <div>
+                <h3 className="text-2xl font-bold text-primary leading-none">2007</h3>
+                <p className="text-sm text-muted-foreground mt-1">Founded</p>
+              </div>
             </div>
-            <div className="text-center">
-          <h3 className="text-3xl font-bold text-primary animate-fade-in-up animation-delay-500">500+</h3>
-          <p className="text-muted-foreground animate-fade-in-up animation-delay-700">Projects</p>
+            <span className="h-10 w-px bg-border hidden sm:block" />
+            <div className={`flex items-center gap-3 transition-all duration-700 ${storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '650ms' }}>
+              <Building2 className="h-6 w-6 text-primary" strokeWidth={1.75} />
+              <div>
+                <h3 className="text-2xl font-bold text-primary leading-none">{projectCount}+</h3>
+                <p className="text-sm text-muted-foreground mt-1">Projects Delivered</p>
+              </div>
             </div>
           </div>
         </div>
-        <div className={`relative flex flex-col items-center transition-all duration-1000 ${
+        <div className={`relative transition-all duration-1000 ${
           storyVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
         }`} style={{ transitionDelay: '300ms' }}>
-          <img
-            src={founderImage}
-            alt="Founder - Eng. Ranmal Fernando"
-            className="rounded-lg shadow-2xl w-auto h-64 object-cover mb-4 hover:shadow-xl transition-shadow duration-300"
-          />
-          <div className="text-center">
-            <h5 className="text-xl font-semibold text-primary">Eng. Ranmal Fernando</h5>
-            <p className="text-muted-foreground text-base">Founder & Principal Engineer</p>
+          <div className="relative max-w-xs mx-auto">
+            <div className="absolute -inset-2.5 rounded-[1.75rem] bg-primary2" />
+            <div className="relative overflow-hidden rounded-3xl shadow-xl">
+              <img
+                src={founderImage}
+                alt="Founder - Eng. Ranmal Fernando"
+                className="w-full aspect-[4/5] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                <h5 className="text-lg font-semibold">Eng. Ranmal Fernando</h5>
+                <p className="text-white/80 text-sm">Founder & Principal Engineer</p>
+              </div>
+            </div>
           </div>
         </div>
           </div>
@@ -151,7 +196,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section ref={valuesRef} className="py-20 bg-muted/30">
+      <section ref={valuesRef} className="py-20 bg-primary2/30">
         <div className="container mx-auto px-4">
           <div className={`text-center space-y-4 mb-16 transition-all duration-1000 ${
             valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -162,29 +207,35 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-6">
             {values.map((value, index) => (
-              <Card 
-                key={index} 
-                className={`h-full text-center hover:shadow-lg transition-all duration-700 hover:scale-105 group ${
-                  valuesVisible 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
+              <div
+                key={value.title}
+                className={`group flex-1 flex flex-col items-center text-center transition-all duration-700 ${
+                  valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: `${300 + index * 100}ms` }}
+                style={{
+                  transitionDelay: `${300 + index * 120}ms`,
+                  marginTop: index % 2 === 1 ? undefined : "0px",
+                }}
               >
-                <CardHeader>
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit group-hover:bg-primary/20 transition-colors duration-300">
-                    <value.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <div
+                  className="hidden md:block w-full"
+                  style={{ height: index % 2 === 1 ? "2.5rem" : "0px" }}
+                />
+                <div className="relative pt-2">
+                  <span className="absolute -top-6 -right-10 text-7xl font-black text-primary/15 select-none z-0 leading-none">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="relative z-10 h-16 w-16 rounded-2xl bg-white shadow-md flex items-center justify-center mb-5 transition-all duration-500 group-hover:bg-primary group-hover:rotate-6 group-hover:shadow-xl">
+                    <value.icon className="h-7 w-7 text-primary transition-colors duration-500 group-hover:text-primary-foreground" />
                   </div>
-                  <CardTitle className="text-primary">{value.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+                </div>
+                <h3 className="text-lg font-bold text-primary mb-2">{value.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-[200px]">
+                  {value.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>

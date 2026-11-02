@@ -14,7 +14,7 @@ const Footer = () => {
                 alt="RFA Logo" 
                 className="h-8 w-auto brightness-0 invert"
               />
-              <span className="text-lg font-bold">Ranmal Fernando Associates</span>
+              <span className="text-lg font-bold text-primary2">Ranmal Fernando Associates</span>
             </div>
             <p className="text-sm text-primary-foreground/80">
               Leading structural engineering consultancy delivering safe and reliable solutions for commercial, residential,  and industrial projects.
@@ -23,21 +23,24 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-primary2">Quick Links</h3>
             <div className="flex flex-col space-y-2">
-              <Link to="/" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              <Link to="/" className="text-sm hover:text-primary2 transition-colors">
                 Home
               </Link>
-              <Link to="/about" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              <Link to="/about" className="text-sm hover:text-primary2 transition-colors">
                 About Us
               </Link>
-              <Link to="/services" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              <Link to="/services" className="text-sm hover:text-primary2 transition-colors">
                 Services
               </Link>
-              <Link to="/projects" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              <Link to="/projects" className="text-sm hover:text-primary2 transition-colors">
                 Projects
               </Link>
-              <Link to="/contact" className="text-sm hover:text-primary-foreground/80 transition-colors">
+              <Link to="/careers" className="text-sm hover:text-primary2 transition-colors">
+                Careers
+              </Link>
+              <Link to="/contact" className="text-sm hover:text-primary2 transition-colors">
                 Contact
               </Link>
             </div>
@@ -45,7 +48,7 @@ const Footer = () => {
 
           {/* Services */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Services</h3>
+            <h3 className="text-lg font-semibold text-primary2">Services</h3>
             <div className="flex flex-col space-y-2 text-sm text-primary-foreground/80">
               <span>Structural Engineering</span>
               <span>Foundation & Sub-Structure Engineering</span>
@@ -57,7 +60,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Info</h3>
+            <h3 className="text-lg font-semibold text-primary2">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-sm">
                 <MapPin className="h-4 w-4" />

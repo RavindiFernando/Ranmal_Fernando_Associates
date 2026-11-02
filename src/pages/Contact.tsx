@@ -150,14 +150,17 @@ const Contact = () => {
           <div className={`text-center space-y-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
+        <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          Get In Touch
+        </span>
         <h1 className="text-5xl font-bold text-white animate-fade-in-up">Contact Us</h1>
         <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-          Ready to discuss your engineering project? Our team of experts is here to 
+          Ready to discuss your engineering project? Our team of experts is here to
           provide consultation and turn your vision into reality.
         </p>
           </div>
         </div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
       </section>
 
       {/* Contact Form & Info */}
@@ -166,12 +169,11 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card 
+              <Card
                 ref={formRef}
-                className={`p-8 transition-all duration-1000 hover:shadow-xl ${
+                className={`p-8 transition-all duration-1000 hover:shadow-xl bg-primary2/30 border-primary2 ${
                   formVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-                }`} 
-                style={{ backgroundColor: '#f9f6f4cc' }}
+                }`}
               >
                 <CardHeader>
                   <CardTitle className="text-3xl text-primary mb-2">Send Us a Message</CardTitle>
@@ -245,8 +247,8 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full">
-                      <Send className="mr-2 h-5 w-5" />
+                    <Button type="submit" className="w-full group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+                      <Send className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                       Send Message
                     </Button>
                   </form>
@@ -255,36 +257,37 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div ref={contactInfoRef} className="space-y-6">
+            <div
+              ref={contactInfoRef}
+              className="rounded-2xl bg-primary2/30 border border-primary2 p-6 md:p-8"
+            >
               {contactInfo.map((info, index) => (
-                <Card 
-                  key={index} 
-                  className={`p-6 transition-all duration-700 hover:shadow-lg hover:scale-105 group ${
-                    contactInfoVisible 
-                      ? 'opacity-100 translate-x-0' 
-                      : 'opacity-0 translate-x-8'
-                  }`}
-                  style={{ 
-                    backgroundColor: '#f9f6f4cc',
-                    transitionDelay: `${index * 150}ms`
-                  }}
+                <div
+                  key={info.title}
+                  className={`group relative flex items-start gap-5 transition-all duration-700 ${
+                    contactInfoVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                  } ${index !== contactInfo.length - 1 ? 'pb-7' : ''}`}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-                      <info.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-primary mb-2">{info.title}</h3>
-                      <div className="space-y-1">
-                        {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-sm text-muted-foreground">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
+                  {/* connecting line */}
+                  {index !== contactInfo.length - 1 && (
+                    <div className="absolute left-6 top-14 bottom-0 w-px bg-primary/20" />
+                  )}
+
+                  <div className="relative shrink-0 h-12 w-12 rounded-full bg-white shadow-sm flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
+                    <info.icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
+                  </div>
+                  <div className="pt-2">
+                    <h3 className="font-semibold text-primary mb-1">{info.title}</h3>
+                    <div className="space-y-0.5">
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-sm text-muted-foreground">
+                          {detail}
+                        </p>
+                      ))}
                     </div>
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -292,14 +295,14 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-primary2/30">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-4xl font-bold text-primary">Visit Our Office</h2>
-            
+
           </div>
-          
-          <Card className="overflow-hidden" style={{ backgroundColor: '#f9f6f4cc' }}>
+
+          <Card className="overflow-hidden bg-white hover:shadow-xl transition-shadow duration-500">
             <div className="h-96">
               {/* 
                 1. Go to Google Maps and find your location.

@@ -1,8 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { MapPin, Eye } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import project1 from "@/assets/project1.jpeg";
 import project2 from "@/assets/project2.jpg";
@@ -18,9 +18,18 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [projectsVisible, setProjectsVisible] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [spotlightIndex, setSpotlightIndex] = useState(0);
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
   const ctaRef = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSpotlightIndex((prev) => (prev + 1) % 9);
+    }, 2600);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observerOptions = {
@@ -82,7 +91,7 @@ const Projects = () => {
   {
     id: 3,
     title: "Sugar Factory Ethimale",
-    location: "Siyambalanduwa, Sri Lanka",
+    location: "Ethimale, Monaragala, Sri Lanka",
     year: "2024",
     description: "A state-of-the-art sugar processing facility operating with mechanical farming methods and sustainable energy practices.",
     image: project3
@@ -115,8 +124,8 @@ const Projects = () => {
   },
   {
     id: 7,
-    title: "Tea Storage Building - Anverally Tea",
-    location: "Colombo, Sri Lanka",
+    title: "Tea Storage Building - Anverally and Sons",
+    location: "Hendala, Wattala, Sri Lanka",
     year: "Not specified",
     description: "A facility designed for the storage of Ceylon tea, supporting the operations of a historic tea company.",
     image: project7
@@ -141,18 +150,7 @@ const Projects = () => {
 ];
 
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Completed":
-        return "bg-green-100 text-green-800";
-      case "In Progress":
-        return "bg-blue-100 text-blue-800";
-      case "Design Phase":
-        return "bg-yellow-100 text-yellow-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
-  };
+  const selectedProject = projects.find((p) => p.id === selectedId) ?? null;
 
   return (
     <div className="min-h-screen">
@@ -172,14 +170,17 @@ const Projects = () => {
           <div className={`text-center space-y-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
+            <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Our Portfolio
+            </span>
             <h1 className="text-5xl font-bold text-white animate-fade-in-up">Our Projects</h1>
             <p className="text-xl text-neutral-50 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-              Explore our portfolio of successful engineering projects that demonstrate our 
+              Explore our portfolio of successful engineering projects that demonstrate our
               commitment to innovation, quality, and sustainable development.
             </p>
           </div>
         </div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
       </section>
 
       {/* 
@@ -205,60 +206,99 @@ const Projects = () => {
       {/* Projects Grid */}
       <section ref={projectsRef} className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {projects.map((project, index) => (
-              <Card 
-                key={project.id} 
-                className={`overflow-hidden hover:shadow-xl transition-all duration-700 hover:scale-105 group
-                  ${
-                    projectsVisible
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
-                  }
-                  sm:opacity-100 sm:translate-y-0`
-                }
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 [column-fill:_balance]">
+            {projects.map((project, index) => {
+              const isSpotlit = spotlightIndex === index;
+              return (
+                <div
+                  key={project.id}
+                  onClick={() => setSelectedId(project.id)}
+                  className={`relative overflow-hidden rounded-2xl group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700 mb-4 md:mb-5 break-inside-avoid ${
+                    projectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <img
+                    src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className={`block w-full h-auto object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 ${
+                      isSpotlit ? 'scale-105' : 'scale-100'
+                    }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary group-hover:text-primary/80 transition-colors duration-300">
-                    {project.title}
-                  </CardTitle>
-                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                    <div className="flex items-center space-x-1">
-                      <MapPin className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                      <span>{project.location}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4 group-hover:text-primary transition-colors duration-300" />
-                      <span>{project.year}</span>
-                    </div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent transition-all duration-500 group-hover:from-black/95 ${
+                      isSpotlit ? 'from-black/95' : ''
+                    }`}
+                  />
+
+                  <div
+                    className={`absolute top-3 right-3 md:top-4 md:right-4 h-9 w-9 md:h-10 md:w-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 ${
+                      isSpotlit ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
+                    }`}
+                  >
+                    <Eye className="h-4 w-4 md:h-5 md:w-5 text-white" />
                   </div>
-                </CardHeader>
-                
-                <CardContent className="space-y-6">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                </CardContent>
-              </Card>
-            ))}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 text-white">
+                    <h3 className="text-base md:text-xl font-bold leading-snug">
+                      {project.title}
+                    </h3>
+                    <div className="flex items-center gap-1 text-xs md:text-sm text-white/80 mt-1">
+                      <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 shrink-0" />
+                      <span className="line-clamp-1">{project.location}</span>
+                    </div>
+                    <p
+                      className={`text-xs md:text-sm text-white/80 leading-relaxed mt-2 overflow-hidden transition-all duration-500 line-clamp-2 group-hover:max-h-20 group-hover:opacity-100 ${
+                        isSpotlit ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
+      {/* Project Detail Modal */}
+      <Dialog open={selectedProject !== null} onOpenChange={(open) => !open && setSelectedId(null)}>
+        <DialogContent className="max-w-2xl p-0 overflow-hidden rounded-2xl">
+          {selectedProject && (
+            <>
+              <div className="relative h-72">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 text-white">
+                  <h2 className="text-2xl md:text-3xl font-bold">{selectedProject.title}</h2>
+                  <div className="flex items-center gap-4 text-sm text-white/80 mt-2">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-4 w-4" /> {selectedProject.location}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 space-y-6">
+                <p className="text-muted-foreground leading-relaxed">
+                  {selectedProject.description}
+                </p>
+                <Button className="w-full sm:w-auto" asChild>
+                  <a href="/contact">Discuss a Similar Project</a>
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
       
       {/* CTA Section */}
-          <section ref={ctaRef} className="py-20 bg-gradient-to-br from-primary/5 to-accent/10">
+          <section ref={ctaRef} className="py-20 bg-gradient-to-br from-primary2/50 to-background">
             <div className={`container mx-auto px-4 text-center transition-all duration-1000 ${
               ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>

@@ -92,9 +92,12 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-30">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className={`text-white space-y-6 md:space-y-8 px-4 md:pl-8 lg:pl-24 xl:pl-32 transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'}`}>
+            <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Structural Engineering Consultants
+            </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
               <span className="inline-block animate-fade-in-up animation-delay-300">Engineering Excellence</span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary2 bg-primary2 bg-clip-text text-transparent animate-fade-in-up animation-delay-500">
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary2 animate-fade-in-up animation-delay-500">
                  Within Reach
               </span>
             </h1>
@@ -108,15 +111,15 @@ const HeroSection = () => {
                 className="bg-primary hover:bg-primary-glow text-primary-foreground border-0 text-base md:text-lg px-6 md:px-8 py-4 md:py-6 transform hover:scale-105 transition-all duration-300 hover:shadow-xl shadow-primary/25" 
                 asChild
               >
-                <Link to="/projects">
-                  View Our Projects
+                <Link to="/services">
+                  View Our Services
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 text-base md:text-lg px-6 md:px-8 py-4 md:py-6 backdrop-blur-sm bg-white/10 transform hover:scale-105 transition-all duration-300 hover:shadow-xl" 
+                className="border-2 border-primary2 text-primary2 hover:bg-primary2 hover:text-primary text-base md:text-lg px-6 md:px-8 py-4 md:py-6 backdrop-blur-sm bg-primary2/10 transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
                 asChild
               >
                 <Link to="/contact">Get Consultation</Link>

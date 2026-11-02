@@ -1,24 +1,18 @@
-import { Award, Users, Building, Target, Clock, Shield } from "lucide-react";
+import { Award, Building, Clock, Shield } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const stats = [
   {
     icon: Award,
-    value: "25+",
+    value: "19+",
     label: "Years of Excellence",
     description: "Serving the engineering industry with distinction",
   },
   {
     icon: Building,
-    value: "500+",
+    value: "3000+",
     label: "Projects Completed",
     description: "Successfully delivered across various sectors",
-  },
-  {
-    icon: Target,
-    value: "99%",
-    label: "Client Satisfaction",
-    description: "Consistently exceeding expectations",
   },
   {
     icon: Clock,
@@ -119,8 +113,8 @@ const StatsSection = () => {
                 style={{ transitionDelay: `${500 + index * 100}ms` }}
               >
                 {/* Large number */}
-                <div className="flex-shrink-0">
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl font-black bg-primary/75 bg-clip-text text-transparent leading-none group-hover:scale-105 transition-transform duration-300">
+                <div className="flex-shrink-0 w-32 sm:w-36 md:w-40">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl font-black bg-primary/75 bg-clip-text text-transparent leading-none whitespace-nowrap group-hover:scale-105 transition-transform duration-300">
                     {stat.value.includes('%') || stat.value === 'Zero' 
                       ? stat.value 
                       : `${animatedValues[index]}${stat.value.includes('+') ? '+' : ''}`

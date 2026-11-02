@@ -81,19 +81,22 @@ const Services = () => {
           <div className={`text-center space-y-6 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
+        <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          What We Do
+        </span>
         <h1 className="text-5xl font-bold text-white animate-fade-in-up">Our Services</h1>
         <p className="text-xl text-neutral-100 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
           At Ranmal Fernando Associates, we provide reliable structural engineering solutions that ensure every project is safe, efficient, and built to last.
         </p>
           </div>
         </div>
-        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-surface-dark/80 via-primary/40 to-surface-dark/70 pointer-events-none" />
       </section>
 
     <ServicesSection />
 
     {/* CTA Section */}
-          <section ref={ctaRef} className="py-20 bg-gradient-to-br from-primary/5 to-accent/10">
+          <section ref={ctaRef} className="py-20 bg-gradient-to-br from-primary2/50 to-background">
             <div className={`container mx-auto px-4 text-center transition-all duration-1000 ${
               ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
