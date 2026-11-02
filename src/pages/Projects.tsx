@@ -221,7 +221,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className={`block w-full h-auto object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 ${
+                    className={`block w-full h-auto object-cover transition-transform [transition-duration:2000ms] ease-out group-hover:scale-105 ${
                       isSpotlit ? 'scale-105' : 'scale-100'
                     }`}
                   />
