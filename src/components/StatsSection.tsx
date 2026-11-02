@@ -58,7 +58,7 @@ const StatsSection = () => {
           });
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
 
     if (sectionRef.current) {
