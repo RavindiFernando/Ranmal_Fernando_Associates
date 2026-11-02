@@ -104,7 +104,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Office Location",
       details: [
-        "35, 1/1 Sunethradevi Rd, Nugegoda, Sri Lanka"
+        "35 1/1, Sunethradevi Rd, Nugegoda, Sri Lanka"
       ]
     },
     {
