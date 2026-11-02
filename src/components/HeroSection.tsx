@@ -81,21 +81,7 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <div
-            className={`mt-12 flex items-center gap-8 transition-all duration-1000 delay-1000 ${
-              isLoaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
-          >
-            <div>
-              <div className="text-2xl font-bold text-primary2">19+</div>
-              <div className="text-xs text-white/50 uppercase tracking-wide mt-0.5">Years</div>
-            </div>
-            <span className="h-8 w-px bg-white/15" />
-            <div>
-              <div className="text-2xl font-bold text-primary2">3000+</div>
-              <div className="text-xs text-white/50 uppercase tracking-wide mt-0.5">Projects</div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
