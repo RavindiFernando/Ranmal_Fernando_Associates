@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Eyebrow from "@/components/Eyebrow";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -29,11 +30,9 @@ const PageHero = ({ eyebrow, title, description, image }: PageHeroProps) => {
       <div className="relative z-10 w-full px-6 sm:px-10 lg:pl-16 xl:pl-24 pt-28 pb-16">
         <div className="max-w-xl">
           <span
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
+            className={`inline-block transition-all duration-1000 delay-150 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
           >
-            {eyebrow}
+            <Eyebrow tone="dark">{eyebrow}</Eyebrow>
           </span>
 
           <h1

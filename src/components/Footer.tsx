@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 const links = [
   { name: "Home", path: "/" },
@@ -16,13 +17,10 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10">
           <div className="lg:col-span-7">
-            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary2/60">
-              <span className="h-px w-8 bg-primary2/40" />
-              Start a project
-            </p>
+            <Eyebrow tone="dark">Start a project</Eyebrow>
             <h2 className="mt-6 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-[0.95] tracking-tight">
               Let's build
-              <span className="block italic text-primary2">something lasting.</span>
+              <span className="block text-primary2">something lasting.</span>
             </h2>
             <a
               href="mailto:ranmalfrnnd@yahoo.com"
@@ -55,7 +53,7 @@ const Footer = () => {
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary2/60 mb-5">
                 Visit
               </p>
-              <address className="not-italic space-y-4 text-white/70 leading-relaxed">
+              <address className="space-y-4 text-white/70 leading-relaxed">
                 <p>
                   35 1/1, Sunethradevi Rd,
                   <br />

@@ -20,9 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				display: ['"Fraunces"', 'ui-serif', 'serif'],
-				mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
+				sans: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['"Archivo"', 'ui-sans-serif', 'sans-serif'],
+				mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

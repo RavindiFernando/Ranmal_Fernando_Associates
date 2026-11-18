@@ -1,5 +1,6 @@
 import { ClipboardList, Compass, Hammer, KeySquare } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Eyebrow from "@/components/Eyebrow";
 
 const steps = [
   {
@@ -62,11 +63,7 @@ const ProcessSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60">
-            <span className="h-px w-8 bg-primary/40" />
-            03 / How We Work
-            <span className="h-px w-8 bg-primary/40" />
-          </span>
+          <Eyebrow>03 / How We Work</Eyebrow>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mt-4">
             Our Process
           </h2>

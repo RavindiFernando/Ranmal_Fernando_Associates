@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "./HeroSectionSwiper.css";
+import Eyebrow from "@/components/Eyebrow";
 
 const slides = [
   { src: heroImage, alt: "Commercial Building Project" },
@@ -29,11 +30,9 @@ const HeroSection = () => {
       <div className="relative z-20 w-full pt-28 pb-24 pointer-events-none">
         <div className="px-6 sm:px-10 lg:pl-16 xl:pl-24 w-full max-w-2xl pointer-events-auto">
           <span
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary2/90 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide transition-all duration-1000 delay-150 ${
-              isLoaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
+            className={`inline-block transition-all duration-1000 delay-150 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
           >
-            Structural Engineering Consultants
+            <Eyebrow tone="dark">Structural Engineering Consultants</Eyebrow>
           </span>
 
           <h1

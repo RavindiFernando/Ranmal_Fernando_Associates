@@ -53,7 +53,7 @@ const Navigation = () => {
             <span className="h-10 w-10 md:h-11 md:w-11 rounded-full bg-primary2 flex items-center justify-center shrink-0">
               <img src="/images/logo.png" alt="RFA" className="h-6 md:h-7 w-auto" />
             </span>
-            <span className="font-display italic font-semibold text-primary2 text-base md:text-lg xl:text-xl whitespace-nowrap">
+            <span className="font-display font-bold uppercase tracking-wide text-primary2 text-base md:text-lg xl:text-xl whitespace-nowrap">
               Ranmal Fernando Associates
             </span>
           </Link>
@@ -123,7 +123,7 @@ const Navigation = () => {
                   <span
                     className={`font-display text-4xl sm:text-5xl font-semibold transition-colors duration-300 ${
                       isActive(item.path)
-                        ? "text-primary2 italic"
+                        ? "text-primary2"
                         : "text-white group-hover:text-primary2"
                     }`}
                   >

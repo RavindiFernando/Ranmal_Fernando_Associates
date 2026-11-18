@@ -5,6 +5,7 @@ import project1 from "@/assets/project1.jpeg";
 import project3 from "@/assets/project3.jpg";
 import project4 from "@/assets/project4.webp";
 import project6 from "@/assets/project6.jpg";
+import Eyebrow from "@/components/Eyebrow";
 
 const featured = [
   {
@@ -61,10 +62,7 @@ const FeaturedProjectsSection = () => {
           }`}
         >
           <div className="space-y-3">
-            <span className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60">
-              <span className="h-px w-8 bg-primary/40" />
-              02 / Our Work
-            </span>
+            <Eyebrow>02 / Our Work</Eyebrow>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
               Featured Projects
             </h2>

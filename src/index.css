@@ -120,7 +120,13 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display tracking-[0.01em];
+  }
+
+  h1, h2 {
+    @apply uppercase;
+    font-stretch: 100% !important;
+    font-weight: 600 !important;
   }
 }
 
@@ -256,4 +262,9 @@ All colors MUST be HSL.
   .animate-marquee {
     animation: none;
   }
+}
+
+.text-outline-light {
+  color: transparent;
+  -webkit-text-stroke: 1px hsl(var(--primary2) / 0.7);
 }

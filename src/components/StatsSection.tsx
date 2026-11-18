@@ -1,5 +1,6 @@
 import { Award, Building, Clock, Shield } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import Eyebrow from "@/components/Eyebrow";
 
 const stats = [
   {
@@ -75,11 +76,7 @@ const StatsSection = () => {
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <span className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-primary/60 mb-4">
-            <span className="h-px w-8 bg-primary/40" />
-            01 / Track Record
-            <span className="h-px w-8 bg-primary/40" />
-          </span>
+          <Eyebrow>01 / Track Record</Eyebrow>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6">
             Proven Track Record of Excellence
           </h2>
